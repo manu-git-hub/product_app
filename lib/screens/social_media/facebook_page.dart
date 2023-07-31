@@ -7,17 +7,17 @@ import '../../widgets/appbar.dart';
 import '../../widgets/background.dart';
 import '../../widgets/button.dart';
 import '../../widgets/text_field.dart';
-import '../application/instagram_profile.dart';
+import '../application/facebook_profile.dart';
 
-class InstagramPage extends StatefulWidget {
-  const InstagramPage({Key? key}) : super(key: key);
+class FacebookPage extends StatefulWidget {
+  const FacebookPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _InstagramPageState createState() => _InstagramPageState();
+  _FacebookPageState createState() => _FacebookPageState();
 }
 
-class _InstagramPageState extends State<InstagramPage> {
+class _FacebookPageState extends State<FacebookPage> {
   final TextEditingController _usernameController = TextEditingController();
 
   Future<void> _getProfilePicture() async {
@@ -27,7 +27,7 @@ class _InstagramPageState extends State<InstagramPage> {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Username is Empty'),
-          content: const Text('Please enter an Instagram username.'),
+          content: const Text('Please enter an Facebook username.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -40,11 +40,18 @@ class _InstagramPageState extends State<InstagramPage> {
     }
 
     final url =
-        'https://instagram-profile1.p.rapidapi.com/getprofile/$username';
+        // 'https://instagram-profile1.p.rapidapi.com/getprofile/$username';
+        
+        //Change to Instagram
+        '';
 
     final headers = {
-      'X-RapidAPI-Key': 'b6ca451293msh63eb725cd79eb2ap186d52jsn8de54a702884',
-      'X-RapidAPI-Host': 'instagram-profile1.p.rapidapi.com',
+      // 'X-RapidAPI-Key': 'b6ca451293msh63eb725cd79eb2ap186d52jsn8de54a702884',
+      // 'X-RapidAPI-Host': 'instagram-profile1.p.rapidapi.com',
+
+      //change to Facebook
+      'X-RapidAPI-Key': '',
+      'X-RapidAPI-Host':'',
     };
 
     try {
@@ -55,15 +62,15 @@ class _InstagramPageState extends State<InstagramPage> {
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        final profilePictureUrl = data['profile_pic_url'];
+        // final profilePictureUrl = data['profile_pic_url'];
 
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => InstagramProfilePage(
-              profilePictureUrl: profilePictureUrl,
-              username: username,
+            builder: (context) => FacebookProfilePage(
+              // profilePictureUrl: profilePictureUrl,
+              // username: username,
             ),
           ),
         );

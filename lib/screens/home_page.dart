@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'social_media/facebook_page.dart';
 import 'social_media/instagram_page.dart';
-import '../screens/whatsapp.dart';
+import 'social_media/whatsapp.dart';
 import '../widgets/appbar.dart';
 import '../widgets/background.dart';
 import '../widgets/button.dart';
@@ -49,7 +50,11 @@ class HomePage extends StatelessWidget {
                 buttonName: 'Facebook',
 
                 onPressed: () {
-                  // Handle Facebook button press here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FacebookPage()),
+                  );
                 },
               ),
               const SizedBox(height: 20),

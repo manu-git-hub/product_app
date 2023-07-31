@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:profile_picture/widgets/button.dart';
-import '../widgets/animation_type.dart';
-import '../widgets/appbar.dart';
-import '../widgets/background.dart';
-import '../widgets/profile.dart';
+import '../../widgets/animation_type.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/background.dart';
+import '../../widgets/profile.dart';
 
 class WhatsApp extends StatefulWidget {
   const WhatsApp({Key? key}) : super(key: key);
@@ -50,21 +50,23 @@ class _WhatsAppState extends State<WhatsApp>
             children: [
               // Using the reusable ProfilePicture widget
               const ProfilePicture(
-                imageUrl: 'https://example.com/whatsapp_profile_image.jpg',
+                imageUrl:
+                    'https://www.popsci.com/uploads/2023/03/07/why-you-should-set-up-whatsapp-web.jpg?auto=webp&width=1440&height=810',
                 size: 150.0,
               ),
               const SizedBox(height: 20),
               // Using the reusable DownloadButton widget
               CustomButton(
                 buttonName: "Download Profile Picture",
-            
                 onPressed: () {
                   // Implement the download functionality here
                 },
               ),
               const SizedBox(height: 20),
               // Using the reusable AnimatedTypewriterText widget
-               const AnimatedTypewriterText(text: 'Make your profile shine!',),
+              const AnimatedTypewriterText(
+                text: 'Make your profile shine!',
+              ),
             ],
           ),
         ),

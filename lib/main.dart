@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_page.dart';
-import 'screens/whatsapp.dart';
 import 'screens/splash_screen.dart';
-
 
 void main() {
   runApp(MaterialApp(
@@ -17,7 +15,6 @@ void main() {
     debugShowCheckedModeBanner: false,
     routes: {
       '/home': (context) => const HomePage(),
-      '/whatsapp': (context) => const WhatsApp(),
     },
   ));
 }
