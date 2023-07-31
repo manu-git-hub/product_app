@@ -9,6 +9,7 @@ import '../../widgets/animation_type.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/background.dart';
 import '../../widgets/button.dart';
+import '../../widgets/profile.dart';
 
 class InstagramProfilePage extends StatefulWidget {
   final String profilePictureUrl;
@@ -56,8 +57,8 @@ class _InstagramProfilePageState extends State<InstagramProfilePage> {
                 text: 'Welcome to ${widget.username}!',
               ),
               const SizedBox(height: 16),
-              ClipOval(
-                child: Image.network(widget.profilePictureUrl),
+              ProfilePicture(
+                imageUrl: widget.profilePictureUrl,
               ),
               const SizedBox(height: 16),
               CustomButton(

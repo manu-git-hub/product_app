@@ -3,7 +3,7 @@ import 'package:profile_picture/widgets/button.dart';
 import '../widgets/animation_type.dart';
 import '../widgets/appbar.dart';
 import '../widgets/background.dart';
-import '../widgets/custom_whatsapp.dart';
+import '../widgets/profile.dart';
 
 class WhatsApp extends StatefulWidget {
   const WhatsApp({Key? key}) : super(key: key);
