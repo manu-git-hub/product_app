@@ -11,7 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Social Media Links'),
+      appBar: const CustomAppBar(
+        title: 'Social Media Links',
+      ),
       body: CustomBackground(
         // Use the custom background widget
         child: Center(
@@ -36,7 +38,8 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const InstagramPage()),
+                    MaterialPageRoute(
+                        builder: (context) => const InstagramPage()),
                   );
                 },
               ),

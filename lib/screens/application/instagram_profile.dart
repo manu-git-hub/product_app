@@ -5,14 +5,20 @@ import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-
+import '../../widgets/animation_type.dart';
 import '../../widgets/appbar.dart';
+import '../../widgets/background.dart';
+import '../../widgets/button.dart';
 
 class InstagramProfilePage extends StatefulWidget {
   final String profilePictureUrl;
+  final String username;
 
-  const InstagramProfilePage({Key? key, required this.profilePictureUrl})
-      : super(key: key);
+  const InstagramProfilePage({
+    Key? key,
+    required this.profilePictureUrl,
+    required this.username,
+  }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -38,25 +44,29 @@ class _InstagramProfilePageState extends State<InstagramProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: const CustomAppBar(title: 'Instagram Profile'),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(widget.profilePictureUrl),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _saveImageToDevice,
-              child: const Text('Download Image'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Go Back'),
-            ),
-          ],
+      appBar: const CustomAppBar(
+        title: 'Instagram Profile',
+      ),
+      body: CustomBackground(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedTypewriterText(
+                text: 'Welcome to ${widget.username}!',
+              ),
+              const SizedBox(height: 16),
+              ClipOval(
+                child: Image.network(widget.profilePictureUrl),
+              ),
+              const SizedBox(height: 16),
+              CustomButton(
+                buttonName: "Download Image",
+                onPressed: _saveImageToDevice,
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
       ),
     );

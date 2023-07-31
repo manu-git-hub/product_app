@@ -21,7 +21,24 @@ class _InstagramPageState extends State<InstagramPage> {
   final TextEditingController _usernameController = TextEditingController();
 
   Future<void> _getProfilePicture() async {
-    final username = _usernameController.text;
+    final username = _usernameController.text.trim();
+    if (username.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Username is Empty'),
+          content: const Text('Please enter an Instagram username.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
     final url =
         'https://instagram-profile1.p.rapidapi.com/getprofile/$username';
 
@@ -43,6 +60,7 @@ class _InstagramPageState extends State<InstagramPage> {
           MaterialPageRoute(
             builder: (context) => InstagramProfilePage(
               profilePictureUrl: profilePictureUrl,
+               username: username,
             ),
           ),
         );
