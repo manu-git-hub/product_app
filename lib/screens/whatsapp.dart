@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profile_picture/widgets/button.dart';
+import '../widgets/animation_type.dart';
 import '../widgets/appbar.dart';
 import '../widgets/background.dart';
 import '../widgets/custom_whatsapp.dart';
@@ -63,7 +64,7 @@ class _WhatsAppState extends State<WhatsApp>
               ),
               const SizedBox(height: 20),
               // Using the reusable AnimatedTypewriterText widget
-              const AnimatedTypewriterText(),
+               const AnimatedTypewriterText(text: 'Make your profile shine!',),
             ],
           ),
         ),

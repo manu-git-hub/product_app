@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 class ProfilePicture extends StatelessWidget {
   final String imageUrl;
@@ -33,23 +32,3 @@ class ProfilePicture extends StatelessWidget {
   }
 }
 
-class AnimatedTypewriterText extends StatelessWidget {
-  const AnimatedTypewriterText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedTextKit(
-      animatedTexts: [
-        TypewriterAnimatedText(
-          'Make Your WhatsApp Profile Shine!',
-          textStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          speed: const Duration(milliseconds: 100),
-        ),
-      ],
-    );
-  }
-}
