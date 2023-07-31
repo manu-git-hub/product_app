@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:fluttertoast/fluttertoast.dart';
+
 import '../application/instagram_profile.dart';
 
 class InstagramPage extends StatefulWidget {
@@ -13,59 +13,37 @@ class InstagramPage extends StatefulWidget {
 
 class _InstagramPageState extends State<InstagramPage> {
   final TextEditingController _usernameController = TextEditingController();
-  String? _profilePictureUrl;
-  String? _accessToken;
-
-  Future<void> _getLongLivedAccessToken(String shortLivedToken) async {
-    const String clientId = 'YOUR_CLIENT_ID';
-    const String clientSecret = 'YOUR_CLIENT_SECRET';
-    final String apiUrl = 'https://graph.instagram.com/access_token'
-        '?grant_type=ig_exchange_token'
-        '&client_secret=$clientSecret'
-        '&access_token=$shortLivedToken';
-
-    try {
-      final response = await http.get(Uri.parse(apiUrl));
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        setState(() {
-          _accessToken = data['access_token'];
-        });
-      } else {
-        throw Exception('Failed to exchange token.');
-      }
-    } catch (e) {
-      throw Exception('Error occurred during token exchange.');
-    }
-  }
 
   Future<void> _getProfilePicture() async {
-    final String username = _usernameController.text.trim();
-    const String apiVersion = 'v12.0'; // Replace with the desired API version
-    final String apiUrl = 'https://graph.instagram.com/$apiVersion/$username?fields=profile_picture_url&access_token=$_accessToken';
+    final username = _usernameController.text;
+    final url =
+        'https://instagram-profile1.p.rapidapi.com/getprofile/$username';
+
+    final headers = {
+      'X-RapidAPI-Key': 'b6ca451293msh63eb725cd79eb2ap186d52jsn8de54a702884',
+      'X-RapidAPI-Host': 'instagram-profile1.p.rapidapi.com',
+    };
 
     try {
-      final response = await http.get(Uri.parse(apiUrl));
+      final response = await http.get(Uri.parse(url), headers: headers);
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        setState(() {
-          _profilePictureUrl = data['profile_picture_url'];
-        });
+        final profilePictureUrl = data['profile_pic_url'];
 
-        // Navigate to InstagramProfilePage with the fetched profile picture URL
-        // ignore: use_build_context_synchronously
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => InstagramProfilePage(profilePictureUrl: _profilePictureUrl),
+            builder: (context) => InstagramProfilePage(
+              profilePictureUrl: profilePictureUrl,
+            ),
           ),
         );
       } else {
-        Fluttertoast.showToast(msg: 'Failed to fetch profile picture.');
+        print('API Call failed with status code: ${response.statusCode}');
       }
-    } catch (e) {
-      Fluttertoast.showToast(msg: 'Error occurred. Please try again later.');
+    } catch (error) {
+      print('Error occurred: $error');
     }
   }
 
@@ -86,14 +64,7 @@ class _InstagramPageState extends State<InstagramPage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () async {
-                // Replace 'YOUR_SHORT_LIVED_ACCESS_TOKEN' with the actual short-lived access token
-                final String shortLivedToken = 'YOUR_SHORT_LIVED_ACCESS_TOKEN';
-                await _getLongLivedAccessToken(shortLivedToken);
-                if (_accessToken != null) {
-                  _getProfilePicture();
-                }
-              },
+              onPressed: _getProfilePicture,
               child: const Text('Get Profile Picture'),
             ),
           ],
