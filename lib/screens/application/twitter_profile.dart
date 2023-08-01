@@ -10,11 +10,11 @@ import '../../widgets/background.dart';
 import '../../widgets/button.dart';
 import '../../widgets/profile.dart';
 
-class FacebookProfilePage extends StatefulWidget {
+class TwitterProfilePage extends StatefulWidget {
   // final String profilePictureUrl;
   // final String username;
 
-  const FacebookProfilePage({
+  const TwitterProfilePage({
     Key? key,
     // required this.profilePictureUrl,
     // required this.username,
@@ -22,10 +22,10 @@ class FacebookProfilePage extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _FacebookProfilePageState createState() => _FacebookProfilePageState();
+  _TwitterProfilePageState createState() => _TwitterProfilePageState();
 }
 
-class _FacebookProfilePageState extends State<FacebookProfilePage> {
+class _TwitterProfilePageState extends State<TwitterProfilePage> {
   Future<void> _saveImageToDevice() async {
     // final response = await http.get(Uri.parse(widget.profilePictureUrl));
     // if (response.statusCode == 200) {
@@ -45,7 +45,7 @@ class _FacebookProfilePageState extends State<FacebookProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Facebook Profile',
+        title: 'Twitter Profile',
       ),
       body: CustomBackground(
         child: Center(
@@ -64,7 +64,7 @@ class _FacebookProfilePageState extends State<FacebookProfilePage> {
                 //Dummy
 
                 imageUrl:
-                    "https://photos5.appleinsider.com/gallery/50730-99989-Facebook-app-logo-xl.jpg",
+                    "https://www.siasat.com/wp-content/uploads/2022/01/Twitter_Logo.jpeg",
               ),
               const SizedBox(height: 16),
               CustomButton(

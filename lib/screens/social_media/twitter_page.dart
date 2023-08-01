@@ -8,27 +8,27 @@ import '../../widgets/appbar.dart';
 import '../../widgets/background.dart';
 import '../../widgets/button.dart';
 import '../../widgets/text_field.dart';
-import '../application/facebook_profile.dart';
+import '../application/twitter_profile.dart';
 
-class FacebookPage extends StatefulWidget {
-  const FacebookPage({Key? key}) : super(key: key);
+class TwitterPage extends StatefulWidget {
+  const TwitterPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _FacebookPageState createState() => _FacebookPageState();
+  _TwitterPageState createState() => _TwitterPageState();
 }
 
-class _FacebookPageState extends State<FacebookPage> {
+class _TwitterPageState extends State<TwitterPage> {
   final TextEditingController _usernameController = TextEditingController();
 
-   Future<void> _getProfilePicture() async {
+  Future<void> _getProfilePicture() async {
     final username = _usernameController.text.trim();
     if (username.isEmpty) {
       showDialog(
         context: context,
         builder: (context) => CustomAlertDialog(
           title: 'Username is Empty',
-          content: 'Please enter a Facebook username.',
+          content: 'Please enter a Twitter username.',
           onOkPressed: () => Navigator.pop(context),
         ),
       );
@@ -39,7 +39,7 @@ class _FacebookPageState extends State<FacebookPage> {
     // 'https://instagram-profile1.p.rapidapi.com/getprofile/$username';
 
     //Change to Instagram
-    // '';
+    //     '';
 
     // final headers = {
     // 'X-RapidAPI-Key': 'b6ca451293msh63eb725cd79eb2ap186d52jsn8de54a702884',
@@ -47,15 +47,14 @@ class _FacebookPageState extends State<FacebookPage> {
 
     //change to Facebook
     //   'X-RapidAPI-Key': '',
-    //   'X-RapidAPI-Host': '',
+    //   'X-RapidAPI-Host':'',
     // };
 
     // try {
-    // final response = await http.get(
-    //   Uri.parse(url),
-    //   headers: headers,
-    // );
-
+    //   final response = await http.get(
+    //     Uri.parse(url),
+    //     headers: headers,
+    //   );
     // if (response.statusCode == 200) {
     // final data = json.decode(response.body);
     // final profilePictureUrl = data['profile_pic_url'];
@@ -64,21 +63,21 @@ class _FacebookPageState extends State<FacebookPage> {
     // Navigator.push(
     //   context,
     //   MaterialPageRoute(
-    //     builder: (context) => const FacebookProfilePage(
+    //     builder: (context) => const TwitterProfilePage(
     // profilePictureUrl: profilePictureUrl,
     // username: username,
-    //         ),
-    //   ),
-    // );
+    //           ),
+    //     ),
+    //   );
     // }
     // else {
     // ignore: avoid_print
-    // print('API Call failed with status code: ${response.statusCode}');
-    // }
+    //     print('API Call failed with status code: ${response.statusCode}');
+    //   }
     // } catch (error) {
-    //   // ignore: avoid_print
-    //   // print('Error occurred: $error');
-    // }
+    // ignore: avoid_print
+    //     print('Error occurred: $error');
+    //   }
     // }
 
     //Dummy Navigation
@@ -86,7 +85,7 @@ class _FacebookPageState extends State<FacebookPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const FacebookProfilePage(),
+          builder: (context) => const TwitterProfilePage(),
         ),
       );
     }
@@ -95,7 +94,7 @@ class _FacebookPageState extends State<FacebookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Facebook Page'),
+      appBar: const CustomAppBar(title: 'Twitter Page'),
       body: CustomBackground(
         child: Center(
           child: Column(
@@ -109,7 +108,7 @@ class _FacebookPageState extends State<FacebookPage> {
                 width: 300, // Set the desired width of the TextField
                 child: CustomTextField(
                   controller: _usernameController,
-                  hintText: 'Enter Facebook Username',
+                  hintText: 'Enter Twitter Username',
                 ),
               ),
               const SizedBox(height: 16),

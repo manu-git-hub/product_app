@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profile_picture/screens/social_media/twitter_page.dart';
 import 'social_media/facebook_page.dart';
 import 'social_media/instagram_page.dart';
 import 'social_media/whatsapp.dart';
@@ -63,7 +64,11 @@ class HomePage extends StatelessWidget {
                 buttonName: 'Twitter',
 
                 onPressed: () {
-                  // Handle Twitter button press here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TwitterPage()),
+                  );
                 },
               ),
             ],
