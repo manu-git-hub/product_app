@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../widgets/alert.dart';
 import '../../widgets/animation_type.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/background.dart';
@@ -25,15 +26,10 @@ class _InstagramPageState extends State<InstagramPage> {
     if (username.isEmpty) {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Username is Empty'),
-          content: const Text('Please enter an Instagram username.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
+        builder: (context) => CustomAlertDialog(
+          title: 'Username is Empty',
+          content: 'Please enter a Instagram username.',
+          onOkPressed: () => Navigator.pop(context),
         ),
       );
       return;
